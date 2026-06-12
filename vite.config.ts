@@ -9,11 +9,18 @@ const BASE_PATH = "/demo/fms";
 const UPLOAD_API_TARGET =
   "https://yz1zrecbsj.execute-api.ap-southeast-1.amazonaws.com";
 const UPLOAD_API_PATH = "/dev/RnD/webapp/file/upload";
+const LIST_FILES_API_PATH = "/dev/RnD/webapp/file/list";
 
 const uploadProxy = {
   target: UPLOAD_API_TARGET,
   changeOrigin: true,
   rewrite: () => UPLOAD_API_PATH,
+} as const;
+
+const listFilesProxy = {
+  target: UPLOAD_API_TARGET,
+  changeOrigin: true,
+  rewrite: () => LIST_FILES_API_PATH,
 } as const;
 
 // https://vitejs.dev/config/
@@ -23,11 +30,13 @@ export default defineConfig({
   server: {
     proxy: {
       [`${BASE_PATH}/api/upload`]: uploadProxy,
+      [`${BASE_PATH}/api/files`]: listFilesProxy,
     },
   },
   preview: {
     proxy: {
       [`${BASE_PATH}/api/upload`]: uploadProxy,
+      [`${BASE_PATH}/api/files`]: listFilesProxy,
     },
   },
 });

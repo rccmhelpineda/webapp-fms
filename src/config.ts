@@ -6,8 +6,13 @@ const PRODUCTION_UPLOAD_API_URL =
 function resolveUploadApiUrl(): string {
   const fromEnv = import.meta.env.VITE_UPLOAD_API_URL;
   if (fromEnv) return fromEnv;
-  // Same-origin subpath proxy (Vite dev + Vercel rewrite) avoids API Gateway OPTIONS/CORS.
   return withBasePath("/api/upload");
+}
+
+function resolveListFilesApiUrl(): string {
+  const fromEnv = import.meta.env.VITE_LIST_FILES_API_URL;
+  if (fromEnv) return fromEnv;
+  return withBasePath("/api/files");
 }
 
 const DEFAULT_MAX_UPLOAD_BYTES = 104_857_600;
@@ -21,6 +26,7 @@ function parsePositiveInt(value: string | undefined, fallback: number): number {
 
 export const appConfig = {
   uploadApiUrl: resolveUploadApiUrl(),
+  listFilesApiUrl: resolveListFilesApiUrl(),
   /** Direct API URL override (use when API Gateway CORS/OPTIONS is configured). */
   productionUploadApiUrl: PRODUCTION_UPLOAD_API_URL,
   maxUploadBytes: parsePositiveInt(

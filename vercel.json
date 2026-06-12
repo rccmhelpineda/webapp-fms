@@ -6,6 +6,14 @@
       "destination": "https://yz1zrecbsj.execute-api.ap-southeast-1.amazonaws.com/dev/RnD/webapp/file/upload"
     },
     {
+      "source": "/demo/fms/api/files",
+      "destination": "https://yz1zrecbsj.execute-api.ap-southeast-1.amazonaws.com/dev/RnD/webapp/file/list"
+    },
+    {
+      "source": "/demo/fms/RCCLogo.svg",
+      "destination": "/RCCLogo.svg"
+    },
+    {
       "source": "/demo/fms/assets/:path*",
       "destination": "/assets/:path*"
     },
