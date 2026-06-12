@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/demo/fms/api/upload",
+      "destination": "https://yz1zrecbsj.execute-api.ap-southeast-1.amazonaws.com/dev/RnD/webapp/file/upload"
+    },
+    {
+      "source": "/demo/fms/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/demo/fms/vite.svg",
+      "destination": "/vite.svg"
+    },
+    {
+      "source": "/demo/fms",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/demo/fms/:path*",
+      "destination": "/index.html"
+    }
+  ]
+}
