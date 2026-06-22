@@ -1,0 +1,9 @@
+# Requires a Fargate profile that selects namespace webapp-fms (see reference/EKS_RND_LAB_GUIDE.md).
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+patches:
+  - path: resources-patch.yaml
