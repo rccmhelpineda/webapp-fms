@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-fms
+  namespace: webapp-fms
+  labels:
+    app: webapp-fms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-fms
+  template:
+    metadata:
+      labels:
+        app: webapp-fms
+    spec:
+      containers:
+        - name: webapp-fms
+          image: webapp-fms:latest
+          ports:
+            - containerPort: 80
+              name: http
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          livenessProbe:
+            httpGet:
+              path: /demo/fms/
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /demo/fms/
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
