@@ -2,6 +2,8 @@
 
 Static React SPA served by nginx at subpath `/demo/fms/`, with API reverse proxy parity to `vercel.json`.
 
+For Kubernetes deployment (Kustomize overlays), see [k8s/README.md](k8s/README.md).
+
 ## Prerequisites
 
 - Docker Desktop (or Docker Engine)
